@@ -1,5 +1,6 @@
 package br.com.atividade.example;
 
+import br.com.atividade.example.Busca.Busca;
 import br.com.atividade.example.Ordenacao.Ordenacao;
 
 public class Main {
@@ -19,5 +20,11 @@ public class Main {
         for(int i : array){
             System.out.println(i);
         }
+
+        Busca buscarPorElemento = new Busca();
+
+        boolean resultado = buscarPorElemento.buscaLinear_iterativa_duasPontas(buscarPorElemento.geraVetorNumericoOrdenado(10), 50);
+
+        System.out.println(resultado);
     }
 }
