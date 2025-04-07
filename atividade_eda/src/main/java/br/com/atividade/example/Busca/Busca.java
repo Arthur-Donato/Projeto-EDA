@@ -62,14 +62,48 @@ public class Busca implements Busca_IF{
 
     @Override
     public boolean buscaBinaria_iterativa(int[] numeros, int k) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaBinaria_iterativa'");
+        int indiceInicio = 0;
+        int indiceFinal = numeros.length - 1;
+
+        while(indiceInicio <= indiceFinal){
+            int indiceMeio = indiceInicio + (indiceFinal - indiceInicio) / 2;
+
+            if(numeros[indiceMeio] == k){
+                return true;
+            }
+            else if(k < numeros[indiceMeio]){
+                indiceFinal = indiceMeio - 1;
+            }
+            else if(k > numeros[indiceMeio]){
+                indiceInicio = indiceMeio + 1;
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean buscaBinaria_recursiva(int[] numeros, int k) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscaBinaria_recursiva'");
+        return buscaBinariaRecursivaAux(numeros, k, 0, numeros.length - 1);
+    }
+
+    public boolean buscaBinariaRecursivaAux(int[] numeros, int numeroProcurado, int indiceInicio, int indiceFinal){
+
+        if(indiceInicio > indiceFinal){
+            return false;
+        }
+        int indiceDoMeio = indiceInicio + (indiceFinal - indiceInicio) / 2;
+        System.out.println(indiceDoMeio);
+
+        if(numeros[indiceDoMeio] == numeroProcurado){
+            return true;
+        }
+        else if(numeroProcurado < numeros[indiceDoMeio]){
+            return buscaBinariaRecursivaAux(numeros, numeroProcurado, indiceInicio, indiceDoMeio - 1);
+        }
+        else if(numeroProcurado > numeros[indiceDoMeio]){
+            return buscaBinariaRecursivaAux(numeros, numeroProcurado, indiceDoMeio + 1, indiceFinal);
+        }
+        return false;
     }
     
 }

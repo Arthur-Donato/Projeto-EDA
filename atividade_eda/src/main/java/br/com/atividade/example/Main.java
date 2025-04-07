@@ -23,7 +23,7 @@ public class Main {
 
         Busca buscarPorElemento = new Busca();
 
-        boolean resultado = buscarPorElemento.buscaLinear_iterativa_duasPontas(buscarPorElemento.geraVetorNumericoOrdenado(10), 50);
+        boolean resultado = buscarPorElemento.buscaBinaria_iterativa(buscarPorElemento.geraVetorNumericoOrdenado(5), 5);
 
         System.out.println(resultado);
     }
