@@ -23,7 +23,7 @@ public class Ordenacao implements Ordenacao_IF{
         else{
             for(int i = 0; i < numeros.length - 1; i++) {
                 for(int j = 0; j < numeros.length - 1; j++) {
-                    if(numeros[j] < numeros[j + 1]){
+                    if(numeros[j] > numeros[j + 1]){
                         int numeroTemporario = numeros[j];
                         numeros[j] = numeros[j + 1];
                         numeros[j + 1] = numeroTemporario;
@@ -197,40 +197,42 @@ public class Ordenacao implements Ordenacao_IF{
         }
     }
 
-    public void quickSortJava(int[] numeros, int primeiroIndice, int ultimoIndice){
-        if(primeiroIndice < ultimoIndice){
-            if(numeros[primeiroIndice] > numeros[ultimoIndice]){
-                trocarElementos(numeros, primeiroIndice, ultimoIndice);
+    public void quickSortJava(int[] arr, int low, int high){
+        if (low < high) {
+            // Seleciona dois pivôs
+            int pivot1, pivot2;
+            if (arr[low] > arr[high]) {
+                trocarElementos(arr, low, high);
+            }
+            pivot1 = arr[low];
+            pivot2 = arr[high];
+
+            int lt = low + 1;
+            int gt = high - 1;
+            int i = lt;
+
+            while (i <= gt) {
+                if (arr[i] < pivot1) {
+                    trocarElementos(arr, i, lt);
+                    lt++;
+                } else if (arr[i] > pivot2) {
+                    trocarElementos(arr, i, gt);
+                    gt--;
+                    i--; // Decrementa i pra reavaliar o elemento trocado
+                }
+                i++;
             }
 
-            int primeiroPivot = numeros[primeiroIndice];
-            int segundoPivot = numeros[ultimoIndice];
+            lt--;
+            gt++;
 
-            int i = primeiroIndice + 1;
-            int j = ultimoIndice - 1;
-            int k = i;
+            trocarElementos(arr, low, lt);
+            trocarElementos(arr, high, gt);
 
-            while(k <= j){
-                if(numeros[i] < primeiroPivot){
-                    trocarElementos(numeros, k,i);
-                    i++;
-                }
-                else if(numeros[i] > segundoPivot){
-                    trocarElementos(numeros, k, j);
-                    j--;
-                    k--;
-                }
-                k++;
-            }
-            i--;
-            j++;
-
-            trocarElementos(numeros, primeiroIndice, i);
-            trocarElementos(numeros, ultimoIndice, j);
-
-            quickSortJava(numeros, primeiroIndice, i - 1);
-            quickSortJava(numeros, i + 1, j - 1);
-            quickSortJava(numeros, j + 1, ultimoIndice);
+            // Recursão nas três regiões
+            quickSortJava(arr, low, lt - 1);
+            quickSortJava(arr, lt + 1, gt - 1);
+            quickSortJava(arr, gt + 1, high);
         }
     }
 

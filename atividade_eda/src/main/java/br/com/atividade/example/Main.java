@@ -6,9 +6,9 @@ import br.com.atividade.example.Ordenacao.Ordenacao;
 public class Main {
     public static void main(String[] args) {
         Ordenacao ordenacao = new Ordenacao();
-        int[] array = {2,1,5,4};
+        int[] array = {1,3,5,7,9,2,4,6,8,10,11,13,15,12,14};
 
-        long retornoDeFuncao = ordenacao.random_quickSort(array);
+        long retornoDeFuncao = ordenacao.quickSort_Java(array);
 
         if(retornoDeFuncao == 0){
             System.out.println("O vetor ja estava ordenado");
