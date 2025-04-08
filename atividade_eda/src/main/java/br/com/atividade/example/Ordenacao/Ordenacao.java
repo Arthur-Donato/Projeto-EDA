@@ -17,6 +17,7 @@ public class Ordenacao implements Ordenacao_IF{
 
     @Override
     public long bubbleSort(int[] numeros) {
+        long tempoInicial = System.nanoTime();
         if(checaVetorOrdenado(numeros)){
             return 0;
         }
@@ -31,12 +32,11 @@ public class Ordenacao implements Ordenacao_IF{
                 }
             }
         }
-        return 1;
+        return System.nanoTime() - tempoInicial;
     }
 
     @Override
     public long selectionSort(int[] numeros) {
-
         return -1;
     }
 
@@ -47,7 +47,7 @@ public class Ordenacao implements Ordenacao_IF{
 
     @Override
     public long mergeSort(int[] numeros) {
-        long startTime = System.currentTimeMillis();
+        long tempoInicial = System.nanoTime();
 
         if (numeros == null || numeros.length < 2) {
             return 0;
@@ -55,8 +55,7 @@ public class Ordenacao implements Ordenacao_IF{
 
         mergeSortHelper(numeros, 0, numeros.length - 1);
 
-        long endTime = System.currentTimeMillis();
-        return endTime - startTime;
+        return System.nanoTime() - tempoInicial;
     }
 
     private void mergeSortHelper(int[] array, int esquerda, int direita) {
@@ -111,13 +110,13 @@ public class Ordenacao implements Ordenacao_IF{
 
     @Override
     public long quickSort(int[] numeros) {
+        long tempoInicial = System.nanoTime();
         if(checaVetorOrdenado(numeros)){
-            return 0;
         }
         else{
             quickSortPrimeiroElemento(numeros, 0, numeros.length - 1);
-            return 1;
         }
+        return System.nanoTime() - tempoInicial;
     }
 
     public void quickSortPrimeiroElemento(int[] numeros, int primeiroIndice, int ultimoIndice){
@@ -151,13 +150,13 @@ public class Ordenacao implements Ordenacao_IF{
 
     @Override
     public long random_quickSort(int[] numeros) {
+        long tempoInicial = System.nanoTime();
         if(checaVetorOrdenado(numeros)){
-            return 0;
         }
         else{
             quickSortElementoRandom(numeros, 0, numeros.length - 1);
-            return 1;
         }
+        return System.nanoTime() - tempoInicial;
     }
 
     public void quickSortElementoRandom(int[] numeros, int primeiroIndice, int ultimoIndice){
@@ -188,13 +187,13 @@ public class Ordenacao implements Ordenacao_IF{
 
     @Override
     public long quickSort_Java(int[] numeros) {
+        long tempoInicial = System.nanoTime();
         if(checaVetorOrdenado(numeros)){
-            return 0;
         }
         else{
             quickSortJava(numeros, 0, numeros.length - 1);
-            return 1;
         }
+        return System.nanoTime() - tempoInicial;
     }
 
     public void quickSortJava(int[] arr, int low, int high){
@@ -238,6 +237,7 @@ public class Ordenacao implements Ordenacao_IF{
 
     @Override
     public long countingSort(int[] numeros) {
+        long tempoInicial = System.nanoTime();
         long operacoes = 0L;
 
         if (numeros == null || numeros.length == 0) {
@@ -284,7 +284,7 @@ public class Ordenacao implements Ordenacao_IF{
         System.arraycopy(output, 0, numeros, 0, numeros.length);
         operacoes += numeros.length;
 
-        return operacoes;
+        return System.nanoTime() - tempoInicial;
     }
 
     public void trocarElementos(int[] numeros, int primeiroIndice, int segundoIndice){

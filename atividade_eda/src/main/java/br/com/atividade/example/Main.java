@@ -8,23 +8,11 @@ public class Main {
         Ordenacao ordenacao = new Ordenacao();
         int[] array = {1,3,5,7,9,2,4,6,8,10,11,13,15,12,14};
 
-        long retornoDeFuncao = ordenacao.quickSort_Java(array);
-
-        if(retornoDeFuncao == 0){
-            System.out.println("O vetor ja estava ordenado");
-        }
-        else if(retornoDeFuncao == 1){
-            System.out.println("O vetor foi ordenado com sucesso!");
-        }
-
-        for(int i : array){
-            System.out.println(i);
-        }
-
-        Busca buscarPorElemento = new Busca();
-
-        boolean resultado = buscarPorElemento.buscaBinaria_iterativa(buscarPorElemento.geraVetorNumericoOrdenado(5), 5);
-
-        System.out.println(resultado);
+        System.out.println("Tempo de execucao do Bubble Sort: "+ ordenacao.bubbleSort(array) + " nanosegundos.");
+        System.out.println("Tempo de execucao do Merge Sort: "+ ordenacao.mergeSort(array) + " nanosegundos.");
+        System.out.println("Tempo de execucao do Quick Sort: "+ ordenacao.quickSort(array) + " nanosegundos.");
+        System.out.println("Tempo de execucao do Quick Sort Random: "+ ordenacao.random_quickSort(array) + " nanosegundos.");
+        System.out.println("Tempo de execucao do Quick Sort Java: "+ ordenacao.quickSort_Java(array) + " nanosegundos.");
+        System.out.println("Tempo de execucao do Counting Sort: "+ ordenacao.countingSort(array) + " nanosegundos.");
     }
 }
